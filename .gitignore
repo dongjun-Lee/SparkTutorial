@@ -14,6 +14,11 @@ hs_err_pid*
 
 # Created by .ignore support plugin (hsz.mobi)
 /target
+/Hadoop/target
+/SparkStreaming/target
+/Spark/target
 
 .idea
 *.iml
+
+/Output
