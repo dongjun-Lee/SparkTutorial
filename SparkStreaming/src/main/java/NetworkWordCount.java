@@ -46,12 +46,14 @@ public final class NetworkWordCount {
 
     JavaReceiverInputDStream<String> lines = ssc.socketTextStream(
         args[0], Integer.parseInt(args[1]), StorageLevels.MEMORY_AND_DISK_SER);
+
     JavaDStream<String> words = lines.flatMap(new FlatMapFunction<String, String>() {
       @Override
       public Iterator<String> call(String x) {
         return Arrays.asList(SPACE.split(x)).iterator();
       }
     });
+
     JavaPairDStream<String, Integer> wordCounts = words.mapToPair(
       new PairFunction<String, String, Integer>() {
         @Override
